@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>io.trovent</groupId>
+	<artifactId>trovent-recon-engine</artifactId>
+	<version>1.4.2</version>
+
+	<name>jBPM :: Trovent Recon Engine</name>
+	<description>Trovent Maven project</description>
+
+	<properties>
+		<runtime.version>7.69.0.Final</runtime.version>
+		<java.version>11</java.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.release>11</maven.compiler.release>
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<version>${runtime.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-internal</artifactId>
+			<version>${runtime.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-test</artifactId>
+			<version>${runtime.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20220320</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.yaml</groupId>
+		    <artifactId>snakeyaml</artifactId>
+		    <version>1.33</version>
+		</dependency>
+		
+	</dependencies>
+	
+	<build>
+		<plugins>	
+			<plugin>
+		        <groupId>org.cyclonedx</groupId>
+		        <artifactId>cyclonedx-maven-plugin</artifactId>
+		        <executions>
+		            <execution>
+		                <phase>package</phase>
+		                <goals>
+		                    <goal>makeAggregateBom</goal>
+		                </goals>
+		            </execution>
+		        </executions>
+    		</plugin>
+			<plugin>
+              <groupId>org.owasp</groupId>
+              <artifactId>dependency-check-maven</artifactId>
+              <version>9.0.9</version>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>check</goal>
+                      </goals>
+                  </execution>
+              </executions>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+							<configuration>
+				              <transformers>
+				                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+				                  <mainClass>io.trovent.ProcessMain</mainClass>
+				                </transformer>
+				              </transformers>
+            			</configuration>
+					</execution>
+				</executions>
+			</plugin>	
+		</plugins>
+	</build>
+</project>

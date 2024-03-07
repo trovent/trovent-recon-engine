@@ -1,0 +1,12 @@
+import org.drools.core.process.core.datatype.impl.type.StringDataType;
+
+[
+ [
+  "name":"Openssl",
+  "parameters": [
+    "Message": new StringDataType(),
+  ],
+  "displayName": "Openssl",
+  "icon":"icon-info.gif"
+ ]
+]

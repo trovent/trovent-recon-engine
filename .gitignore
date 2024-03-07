@@ -1,0 +1,15 @@
+ObjectStore/**
+PutObjectStoreDirHere/**
+.settings/**
+/venv
+/.project
+/.classpath
+/target
+.pydevproject
+.project
+**/__pycache__
+src/main/resources/workItems/reporter.d/*
+!src/main/resources/workItems/reporter.d/maindocument.tex
+!src/main/resources/workItems/reporter.d/custompackages.tex
+!src/main/resources/workItems/reporter.d/packages.tex
+

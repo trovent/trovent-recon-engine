@@ -1,0 +1,5 @@
+requests
+bs4
+dnspython3
+python-nmap
+cyclonedx-bom

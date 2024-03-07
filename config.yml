@@ -1,0 +1,14 @@
+modules:
+  - name: DnsDumpster
+    active: true
+  - name: Gobuster
+    active: true
+  - name: Crtsh
+    active: true 
+  - name: Dork
+    active: true
+  - name: HunterIO
+    active: false
+    apikey: abcd
+  - name: Nmap
+    active: true

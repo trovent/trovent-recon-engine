@@ -1,0 +1,12 @@
+import org.drools.core.process.core.datatype.impl.type.StringDataType;
+
+[
+ [
+  "name":"Amass",
+  "parameters": [
+    "Message": new StringDataType(),
+  ],
+  "displayName": "Amass",
+  "icon":"icon-info.gif"
+ ]
+]
